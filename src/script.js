@@ -61,6 +61,9 @@ const calculator = {
       case "/":
         resultValue = this.firstOperand / secondOperand;
         break;
+      case "^":
+        resultValue = Math.pow(this.firstOperand, secondOperand);
+        break;
       default:
         return;
     }
@@ -105,7 +108,7 @@ const calculator = {
 
         if (/^[0-9.]+$/.test(buttonText)) {
           this.addDigit(buttonText);
-        } else if (["+", "-", "*", "/"].includes(buttonText)) {
+        } else if (["+", "-", "*", "/", "^"].includes(buttonText)) {
           this.setOperator(buttonText);
         } else if (buttonText === "=") {
           this.calculate();
