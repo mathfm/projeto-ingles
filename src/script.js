@@ -34,8 +34,18 @@ const calculator = {
   },
 
   calculate() {
-    if (this.operator === null || this.firstOperand === null) return;
+    if (this.operator === null) return;
+
     const secondOperand = parseFloat(this.currentNumber);
+
+    // Verifica se o primeiro operando está definido
+    if (this.firstOperand === null && !isNaN(secondOperand)) {
+      this.firstOperand = secondOperand;
+    } else if (isNaN(secondOperand)) {
+      // Retorna ou trata conforme necessário se o segundo operando não for válido
+      return;
+    }
+
     let resultValue;
 
     switch (this.operator) {
